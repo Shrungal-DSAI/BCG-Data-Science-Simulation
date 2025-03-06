@@ -1,5 +1,12 @@
 ## 📊 BCG Data Science Simulation
 
+# 🔥 PowerCo Customer Churn Prediction  
+
+### 📌 Business Context  
+
+PowerCo, a leading gas and electricity utility, is facing **customer churn issues** due to competitive pricing from rival providers. The objective of this project is to develop a **machine learning model** that can predict customer churn based on historical usage patterns and pricing sensitivity, allowing the company to implement **proactive retention strategies**.
+
+---
 🚀 **Analyzing Customer Churn for PowerCo using Machine Learning**
 
 ### 📌 Project Overview  
