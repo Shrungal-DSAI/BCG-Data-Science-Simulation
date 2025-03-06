@@ -4,12 +4,42 @@
 
 ### 📌 Business Context  
 
-PowerCo, a leading gas and electricity utility, is facing **customer churn issues** due to competitive pricing from rival providers. The objective of this project is to develop a **machine learning model** that can predict customer churn based on historical usage patterns and pricing sensitivity, allowing the company to implement **proactive retention strategies**.
+PowerCo, a major gas and electricity provider, faces a **9.7% churn rate** among **14,606 SME customers**. This project aims to build a predictive model that identifies at-risk customers and provides strategic insights to reduce churn.   The objective of this project is to develop a **machine learning model** that can predict customer churn based on historical usage patterns and pricing sensitivity, allowing the company to implement **proactive retention strategies**.
 
 ---
 
 ### 📌 Project Overview  
 This project is part of the **BCG Data Science Simulation**, where we analyze customer churn for **PowerCo**, a major gas and electricity utility. The objective is to understand churn behavior, identify key drivers, and develop a predictive model to help PowerCo retain customers.
+
+---
+
+### 🎯 Key Insights  
+
+- **Churn Rate**: **9.7%** in the SME division  
+- **Top Churn Drivers** (not price sensitivity!):  
+  1️⃣ **Yearly consumption**  
+  2️⃣ **Forecasted consumption**  
+  3️⃣ **Net margin**  
+- **Discount Strategy**: A **20% discount is effective**, but should be **targeted only at high-value customers with high churn probability**.
+
+---
+
+## 📊 Data Description  
+
+We used two datasets:  
+
+### 🏢 **Client Data (`client_data.csv`)**  
+Contains **customer-level** attributes, including contract details, energy usage, and financial metrics.  
+- **ID-based features**: Client identifier (`id`), first subscription campaign (`origin_up`)  
+- **Energy consumption**: Last 12 months (`cons_12m`), last month (`cons_last_month`), forecasted (`forecast_cons_12m`)  
+- **Contract details**: Activation date (`date_activ`), next renewal (`date_renewal`), end date (`date_end`)  
+- **Financial indicators**: Gross margin (`margin_gross_pow_ele`), net margin (`net_margin`), paid consumption (`imp_cons`)  
+- **Churn Label**: `churn` (Has the client churned over the next 3 months?)  
+
+### 💰 **Pricing Data (`price_data.csv`)**  
+Contains **energy pricing details** across different time periods (peak, off-peak, mid-peak).  
+- **Variable prices** (`price_off_peak_var`, `price_peak_var`, `price_mid_peak_var`)  
+- **Fixed prices** (`price_off_peak_fix`, `price_peak_fix`, `price_mid_peak_fix`)  
 
 ---
 
@@ -54,6 +84,12 @@ This project follows a structured **data science approach**:
 | **XGBoost** | 0.92 | 0.82 | 0.86 | 0.91 |  
 
 ✔️ **XGBoost** achieved the best balance of precision and recall, making it the top-performing model. 
+
+### 🔹 **Key Business Recommendations**  
+
+✅ **Stop blanket discounting!** Instead, target **high-value customers at risk** of churn.  
+✅ **Improve engagement with customers showing decreasing consumption trends**.  
+✅ **Optimize pricing models** based on customer segment behavior. 
 
 ---
 
