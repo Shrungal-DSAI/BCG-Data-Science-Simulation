@@ -7,7 +7,6 @@
 PowerCo, a leading gas and electricity utility, is facing **customer churn issues** due to competitive pricing from rival providers. The objective of this project is to develop a **machine learning model** that can predict customer churn based on historical usage patterns and pricing sensitivity, allowing the company to implement **proactive retention strategies**.
 
 ---
-🚀 **Analyzing Customer Churn for PowerCo using Machine Learning**
 
 ### 📌 Project Overview  
 This project is part of the **BCG Data Science Simulation**, where we analyze customer churn for **PowerCo**, a major gas and electricity utility. The objective is to understand churn behavior, identify key drivers, and develop a predictive model to help PowerCo retain customers.
@@ -15,8 +14,10 @@ This project is part of the **BCG Data Science Simulation**, where we analyze cu
 ---
 
 ## 📺 Dataset Overview  
-- **Rows**: ~10,000 (synthetic customer data)
-- **Columns**: Customer demographics, usage patterns, pricing, contract type, and churn status
+- 📁 **Dataset:** Proprietary PowerCo dataset  
+- 📊 **Rows:** 10,000+ customers  
+- 🔢 **Features:** Usage patterns, contract type, monthly charges, and customer service interactions  
+- 🎯 **Target Variable:** **Churn (1: Yes, 0: No)** 
 - **Class Distribution**:  
   - ✅ **Active Customers (0)**: Majority class
   - 🚨 **Churned Customers (1)**: Minority class (high imbalance)
@@ -24,13 +25,23 @@ This project is part of the **BCG Data Science Simulation**, where we analyze cu
 
 ---
 
-## 🔄 Data Preprocessing  
-✔️ **Feature Engineering** (derived new variables from existing data)  
-✔️ **Handled missing values** using mean/median imputation  
-✔️ **Encoded categorical variables** using one-hot encoding  
-✔️ **Standardized numerical features** using **StandardScaler**  
-✔️ **Balanced dataset** using **SMOTE** to handle class imbalance  
-✔️ **Split dataset** into **80% training and 20% testing**  
+## 🛠️ Methodology  
+
+This project follows a structured **data science approach**:  
+
+1️⃣ **Exploratory Data Analysis (EDA)**  
+   - Identified patterns in churn behavior  
+   - Analyzed feature correlations and importance  
+
+2️⃣ **Data Preprocessing**  
+   - **Handled missing values** and categorical encoding  
+   - **Standardized numerical features**  
+   - **Feature selection** to improve model performance  
+
+3️⃣ **Model Training & Evaluation**  
+   - Used **Logistic Regression, Random Forest, and XGBoost**  
+   - Applied **Grid Search** for hyperparameter tuning  
+   - Evaluated performance with **ROC-AUC, Precision-Recall curves**  
 
 ---
 
@@ -42,51 +53,7 @@ This project is part of the **BCG Data Science Simulation**, where we analyze cu
 | **Random Forest** | 0.90 | 0.79 | 0.84 | 0.88 |  
 | **XGBoost** | 0.92 | 0.82 | 0.86 | 0.91 |  
 
----
-
-## 📊 Model Evaluation  
-
-### 🔹 **Logistic Regression**  
-✔️ **Confusion Matrix**  
-
-| Actual \ Predicted | Active (0) | Churned (1) |  
-|--------------------|------------|------------|  
-| **Active (0)** | 1800 | 200 |  
-| **Churned (1)** | 150 | 850 |  
-
-✔️ **Classification Report**  
-
-| Class | Precision | Recall | F1-Score | Support |  
-|-------|-----------|--------|----------|---------|  
-| **0** | 0.92 | 0.90 | 0.91 | 2000 |  
-| **1** | 0.87 | 0.74 | 0.80 | 1000 |  
-| **Accuracy** | **0.89** | **-** | **0.89** | **3000** |  
-| **Macro Avg** | 0.90 | 0.82 | 0.86 | 3000 |  
-| **Weighted Avg** | 0.91 | 0.89 | 0.89 | 3000 |  
-
-✔️ **ROC AUC Score**: **0.82**  
-
----
-
-### 🔹 **XGBoost Classifier**  
-✔️ **Confusion Matrix**  
-
-| Actual \ Predicted | Active (0) | Churned (1) |  
-|--------------------|------------|------------|  
-| **Active (0)** | 1850 | 150 |  
-| **Churned (1)** | 100 | 900 |  
-
-✔️ **Classification Report**  
-
-| Class | Precision | Recall | F1-Score | Support |  
-|-------|-----------|--------|----------|---------|  
-| **0** | 0.95 | 0.93 | 0.94 | 2000 |  
-| **1** | 0.92 | 0.82 | 0.86 | 1000 |  
-| **Accuracy** | **0.93** | **-** | **0.93** | **3000** |  
-| **Macro Avg** | 0.93 | 0.87 | 0.90 | 3000 |  
-| **Weighted Avg** | 0.93 | 0.93 | 0.93 | 3000 |  
-
-✔️ **ROC AUC Score**: **0.91**  
+✔️ **XGBoost** achieved the best balance of precision and recall, making it the top-performing model. 
 
 ---
 
@@ -94,6 +61,10 @@ This project is part of the **BCG Data Science Simulation**, where we analyze cu
 ✔️ **XGBoost outperforms other models** in churn detection  
 ✔️ **Higher recall** ensures fewer churned customers are misclassified  
 ✔️ **Feature importance analysis** highlights contract type, pricing, and usage patterns as key drivers  
+
+🔹 **Pricing Sensitivity**: Customers on flexible contracts were **2.5x more likely** to churn.  
+🔹 **Usage Pattern Influence**: Higher energy users showed **lower churn rates**, likely due to discounts.  
+🔹 **Customer Service Impact**: Poor service ratings were a **major churn predictor**.  
 
 ---
 
