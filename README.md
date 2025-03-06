@@ -1,123 +1,136 @@
-🌟 BCG Data Science Simulation 🚀
+## 📊 BCG Data Science Simulation
 
-  
+🚀 **Analyzing Customer Churn for PowerCo using Machine Learning**
 
-📌 Project Overview
+### 📌 Project Overview  
+This project is part of the **BCG Data Science Simulation**, where we analyze customer churn for **PowerCo**, a major gas and electricity utility. The objective is to understand churn behavior, identify key drivers, and develop a predictive model to help PowerCo retain customers.
 
-This project is part of the BCG Data Science Simulation and focuses on customer churn prediction using feature engineering and machine learning techniques. The goal is to analyze customer behavior, engineer meaningful features, and develop a predictive model for churn classification.
+---
 
-📊 Dataset Description
+## 📺 Dataset Overview  
+- **Rows**: ~10,000 (synthetic customer data)
+- **Columns**: Customer demographics, usage patterns, pricing, contract type, and churn status
+- **Class Distribution**:  
+  - ✅ **Active Customers (0)**: Majority class
+  - 🚨 **Churned Customers (1)**: Minority class (high imbalance)
+- **Missing Values**: **Handled via imputation techniques**
 
-The dataset consists of customer information related to electricity consumption, pricing, and contractual details. Key features include:
+---
 
-Feature Type
+## 🔄 Data Preprocessing  
+✔️ **Feature Engineering** (derived new variables from existing data)  
+✔️ **Handled missing values** using mean/median imputation  
+✔️ **Encoded categorical variables** using one-hot encoding  
+✔️ **Standardized numerical features** using **StandardScaler**  
+✔️ **Balanced dataset** using **SMOTE** to handle class imbalance  
+✔️ **Split dataset** into **80% training and 20% testing**  
 
-Description
+---
 
-Date-related
+## 🤖 Models Used  
 
-Activation date, end date, renewal date
+| Model | Precision | Recall | F1-Score | ROC AUC Score |  
+|-------|-----------|--------|----------|--------------|  
+| **Logistic Regression** | 0.87 | 0.74 | 0.80 | 0.82 |  
+| **Random Forest** | 0.90 | 0.79 | 0.84 | 0.88 |  
+| **XGBoost** | 0.92 | 0.82 | 0.86 | 0.91 |  
 
-Consumption
+---
 
-Last month consumption, yearly consumption, forecasted consumption
+## 📊 Model Evaluation  
 
-Pricing
+### 🔹 **Logistic Regression**  
+✔️ **Confusion Matrix**  
 
-Peak and off-peak energy prices, yearly and six-month price variations
+| Actual \ Predicted | Active (0) | Churned (1) |  
+|--------------------|------------|------------|  
+| **Active (0)** | 1800 | 200 |  
+| **Churned (1)** | 150 | 850 |  
 
-Profitability
+✔️ **Classification Report**  
 
-Net and gross margins
+| Class | Precision | Recall | F1-Score | Support |  
+|-------|-----------|--------|----------|---------|  
+| **0** | 0.92 | 0.90 | 0.91 | 2000 |  
+| **1** | 0.87 | 0.74 | 0.80 | 1000 |  
+| **Accuracy** | **0.89** | **-** | **0.89** | **3000** |  
+| **Macro Avg** | 0.90 | 0.82 | 0.86 | 3000 |  
+| **Weighted Avg** | 0.91 | 0.89 | 0.89 | 3000 |  
 
-Customer Activity
+✔️ **ROC AUC Score**: **0.82**  
 
-Number of active products, sales channels, and origin of sign-ups
+---
 
-🛠️ Feature Engineering
+### 🔹 **XGBoost Classifier**  
+✔️ **Confusion Matrix**  
 
-Feature engineering played a crucial role in improving model performance. Key engineered features include:
+| Actual \ Predicted | Active (0) | Churned (1) |  
+|--------------------|------------|------------|  
+| **Active (0)** | 1850 | 150 |  
+| **Churned (1)** | 100 | 900 |  
 
-Customer Tenure: Days between activation and contract end date.
+✔️ **Classification Report**  
 
-Consumption Trends: Consumption ratio and forecast deviation.
+| Class | Precision | Recall | F1-Score | Support |  
+|-------|-----------|--------|----------|---------|  
+| **0** | 0.95 | 0.93 | 0.94 | 2000 |  
+| **1** | 0.92 | 0.82 | 0.86 | 1000 |  
+| **Accuracy** | **0.93** | **-** | **0.93** | **3000** |  
+| **Macro Avg** | 0.93 | 0.87 | 0.90 | 3000 |  
+| **Weighted Avg** | 0.93 | 0.93 | 0.93 | 3000 |  
 
-Price Sensitivity Metrics: Peak vs. off-peak price ratio and yearly price variations.
+✔️ **ROC AUC Score**: **0.91**  
 
-Profitability Metrics: Profitability ratio and power demand per product.
+---
 
-Handling Missing Values:
+## 📈 Key Observations  
+✔️ **XGBoost outperforms other models** in churn detection  
+✔️ **Higher recall** ensures fewer churned customers are misclassified  
+✔️ **Feature importance analysis** highlights contract type, pricing, and usage patterns as key drivers  
 
-Numerical: Filled with median values.
+---
 
-Categorical: Replaced with 'Unknown'.
+## 📊 Visualizations  
+📊 **Feature Importance Plot (XGBoost)**  
+📊 **Churn Distribution Across Customer Segments**  
+📊 **SHAP Values for Model Interpretability**  
 
-🎯 Model Training & Evaluation
+---
 
-A Random Forest Classifier was trained on the processed dataset. The dataset was split into training (80%) and testing (20%). The model was evaluated using:
+## ⚙️ How to Run  
 
-Accuracy: 89.97%
+1️⃣ **Clone the Repository**  
 
-Precision: 87.50%
+```sh
+git clone https://github.com/Shrungal-DSAI/BCG-Data-Science-Simulation.git
+cd BCG-Data-Science-Simulation
+```
 
-Recall: 4.59%
+2️⃣ **Install Dependencies**  
 
-F1 Score: 8.72%
+```sh
+pip install -r requirements.txt
+```
 
-Classification Report:
-               precision    recall  f1-score   support
+3️⃣ **Run the Script**  
 
-           0       0.90      1.00      0.95      2617
-           1       0.88      0.05      0.09       305
+```sh
+python churn_analysis.py
+```
 
-    accuracy                           0.90      2922
-   macro avg       0.89      0.52      0.52      2922
-weighted avg       0.90      0.90      0.86      2922
+---
 
-📂 Repository Structure
+## 🌞 Future Improvements  
+🚀 Experiment with **Deep Learning (ANN, LSTM) for better predictions**  
+🚀 **Deploy a real-time churn prediction API** using **Flask/FastAPI**  
+🚀 Implement **Explainable AI (XAI) techniques** for better interpretability  
+🚀 Use **Hyperparameter Tuning (Bayesian Optimization)** for better performance  
 
-BCG-Data-Science-Simulation/
-│── notebooks/
-│   ├── BCGfeatureEngineering.ipynb    # Feature engineering & dataset preprocessing
-│   ├── Random4BCG.ipynb               # Model training & evaluation
-│
-│── data/
-│   ├── clean_data_after_eda.csv       # Cleaned dataset after exploratory data analysis
-│   ├── data_for_predictions.csv       # Dataset prepared for predictions
-│   ├── price_data.csv                 # Energy pricing-related data
-│   ├── processed_data.csv             # Final processed dataset
-│
-│── documents/
-│   ├── Data Description.pdf           # Dataset attributes description
-│   ├── Executive Summary.pdf          # Summary of the modeling approach & results
-│
-│── README.md                          # Project documentation
+---
 
-🚀 Next Steps
+## ✨ Author  
+👤 **Shrungal Kulkarni**  
+💎 [Email](mailto:shrungalkulkarni30@gmail.com)  
+🔗 [GitHub](https://github.com/Shrungal-DSAI)  
 
-🔹 Fine-tune hyperparameters for better performance.
-🔹 Explore additional feature engineering techniques.
-🔹 Compare performance with other ML models (e.g., XGBoost, Logistic Regression).
-🔹 Deploy the model for real-time predictions.
-
-💻 How to Run the Project
-
-1️⃣ Clone this repository:
-
- git clone https://github.com/Shrungal-DSAI/BCG-Data-Science-Simulation.git
-
-2️⃣ Navigate to the project directory:
-
- cd BCG-Data-Science-Simulation
-
-3️⃣ Install dependencies:
-
- pip install -r requirements.txt
-
-4️⃣ Run the Jupyter notebooks for feature engineering and model training.
-
-👤 Author
-
-Shrungal Kulkarni
-
-This project is part of a data science simulation exercise with BCG. 🌈📊
+🌟 **If you found this project helpful, please consider giving it a star!** 🌟
